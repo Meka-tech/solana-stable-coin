@@ -1,0 +1,48 @@
+
+Found a 'test' script in the Anchor.toml. Running it as a test suite!
+
+Running test suite: "/Users/meka/Documents/GitHub/solana/stable-coin/program/Anchor.toml"
+
+yarn run v1.22.22
+$ /Users/meka/Documents/GitHub/solana/stable-coin/program/node_modules/.bin/ts-mocha -p ./tsconfig.json -t 1000000 'tests/**/*.ts'
+
+
+  stablecoin
+ initialized config account:  5L7vbrX4f1PURg2uX6vCvArSwGCoT29gx4YPr1UcfLNUhnx3hdv8z6mpDVYVMLyM7145vTtkPbhdMmdRtuNEEx4m
+    ✔ Is initialized! (290ms)
+    1) deposits collateral and mints usdc
+    2) redeems collateral and burns tokens
+updates config 4FanaG5NR3YpmiTj9rxgDTz2tvX4Sg37xddNSKDfYB6G2wBK7D3BfN4ZYiT3TRpnhvuxcpUBWU5dLKGMq4nVEemt
+    ✔ updates config (426ms)
+    3) liquidates
+updates config 2cQWGsuP274xqcAxt5xsccjspze4wCugjoA5N75uNFAHtw8q1B6Vak3d4uXPCffRRBHXk6eh4aVm1uFUoDQcDRvq
+    ✔ updates config (443ms)
+
+
+  3 passing (2s)
+  3 failing
+
+  1) stablecoin
+       deposits collateral and mints usdc:
+     Error: Unknown action 'undefined'
+      at AnchorProvider.sendAndConfirm (node_modules/@coral-xyz/anchor/src/provider.ts:186:31)
+      at processTicksAndRejections (node:internal/process/task_queues:105:5)
+      at MethodsBuilder.rpc [as _rpcFn] (node_modules/@coral-xyz/anchor/src/program/namespace/rpc.ts:29:16)
+
+  2) stablecoin
+       redeems collateral and burns tokens:
+     Error: Reached maximum depth for account resolution
+      at AccountsResolver.resolve (node_modules/@coral-xyz/anchor/src/program/accounts-resolver.ts:89:15)
+      at processTicksAndRejections (node:internal/process/task_queues:105:5)
+      at MethodsBuilder.rpc (node_modules/@coral-xyz/anchor/src/program/namespace/methods.ts:285:7)
+
+  3) stablecoin
+       liquidates:
+     Error: Reached maximum depth for account resolution
+      at AccountsResolver.resolve (node_modules/@coral-xyz/anchor/src/program/accounts-resolver.ts:89:15)
+      at processTicksAndRejections (node:internal/process/task_queues:105:5)
+      at MethodsBuilder.rpc (node_modules/@coral-xyz/anchor/src/program/namespace/methods.ts:285:7)
+
+
+
+info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.

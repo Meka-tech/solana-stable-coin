@@ -1,5 +1,5 @@
 use anchor_lang::{prelude::*, system_program::{transfer, Transfer}};
-use anchor_spl::{token_2022::{mint_to, MintTo, Token2022}, token_interface::{Mint, TokenAccount }};
+use anchor_spl::token_interface::{Mint, TokenAccount  , MintTo , mint_to , Token2022};
 
 use crate::constants::SEED_CONFIG_ACCOUNT;
 

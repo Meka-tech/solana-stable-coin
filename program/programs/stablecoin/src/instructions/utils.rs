@@ -18,7 +18,7 @@ pub fn check_health_factor(collateral: &Account< Collateral>,
 
 pub fn calculate_health_factor<'info>(
 collateral: &Account< Collateral>,
-config: &Account< Config>,
+config: &Account<Config>,
 price_feed: &Account<PriceUpdateV2>,
 ) -> Result<(u64)> {
 
