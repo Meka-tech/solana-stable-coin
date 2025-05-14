@@ -4,7 +4,9 @@ use anchor_spl::{associated_token::AssociatedToken,  token_interface::{Mint, Tok
 use pyth_solana_receiver_sdk::price_update::PriceUpdateV2;
 
 
-use crate::{Config ,Collateral , SEED_CONFIG_ACCOUNT, SEED_COLLATERAL_TOKEN_ACCOUNT , SEED_SOL_ACCOUNT};
+use crate::{deposit_sol, instructions::check_health_factor, mint_tokens, Collateral, Config, SEED_COLLATERAL_TOKEN_ACCOUNT, SEED_CONFIG_ACCOUNT, SEED_SOL_ACCOUNT};
+
+
 
 
 #[derive(Accounts)]
@@ -78,6 +80,11 @@ pub fn process_deposit_collateral_and_mint_tokens(
       collateral_account.bump = ctx.bumps.collateral_account;
     }
 
+    check_health_factor(&collateral_account, &ctx.accounts.config_account, &ctx.accounts.price_update)?;
+
+    deposit_sol(&ctx.accounts.depositor, &ctx.accounts.sol_account, amount_collateral, &ctx.accounts.system_program)?;
+    
+    mint_tokens(&ctx.accounts.mint_account, &ctx.accounts.token_program, &ctx.accounts.token_account, ctx.accounts.config_account.bump, amount_to_mint)?;
 
     Ok(())
 }
